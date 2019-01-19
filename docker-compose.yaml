@@ -3,7 +3,7 @@ services:
   nginx:
     build: ./
     ports:
-    - "8080:80"
+    - "9080:80"
     volumes:
     - "./code/:/opt/app/"
     - "./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf"
