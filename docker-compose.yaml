@@ -1,0 +1,20 @@
+version: "3"
+services:
+  nginx:
+    build: ./
+    ports:
+    - "8080:80"
+    volumes:
+    - "./code/:/opt/app/"
+    - "./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf"
+  s3:
+    image: minio/minio
+    command: server /export
+    ports:
+    - "9000:9000"
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio
+    environment:
+    - "MINIO_ACCESS_KEY=dalongapp"
+    - "MINIO_SECRET_KEY=dalongapp"
